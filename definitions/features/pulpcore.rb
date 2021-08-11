@@ -12,7 +12,7 @@ class Features::Pulpcore < ForemanMaintain::Feature
 
   def services
     self.class.pulpcore_common_services + configured_workers + [
-      system_service('rh-redis5-redis', 5),
+      system_service(feature(:redis).service_name, 5),
       system_service('httpd', 30)
     ]
   end
